@@ -5,7 +5,7 @@ Home: https://github.com/cpputest/cpputest
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Unit testing and mocking framework for C/C++
 
