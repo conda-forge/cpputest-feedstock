@@ -39,7 +39,7 @@ if [[ ${CONDA_BUILD_CROSS_COMPILATION:-0} == 1 ]]; then
     CXX=${CROSS_CXX}
     LD=${CROSS_LD}
 
-    sed -i -e "s,\$<TARGET_FILE:\${EXECUTABLE}>,$SRC_DIR/build_host/tests/CppUTest/CppUTestTests,g" src/cmake/modules/CppUTestBuildTimeDiscoverTests.cmake
+    sed -i -e "s,\$<TARGET_FILE:\${EXECUTABLE}>,$SRC_DIR/build_host/tests/CppUTest/CppUTestTests,g" cmake/modules/CppUTestBuildTimeDiscoverTests.cmake
 fi
 
 cmake -S . -B build \
