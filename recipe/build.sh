@@ -21,7 +21,7 @@ if [[ ${CONDA_BUILD_CROSS_COMPILATION:-0} == 1 ]]; then
 
     LDFLAGS=${LDFLAGS//${PREFIX}/${BUILD_PREFIX}}
     CC=${CC_FOR_BUILD}
-    CC=${CXX_FOR_BUILD}
+    CXX=${CXX_FOR_BUILD}
     unset LD
 
     cmake -S . -B build_host \
