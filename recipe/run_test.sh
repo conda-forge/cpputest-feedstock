@@ -1,8 +1,8 @@
-#! /bin/sh
+#!/usr/bin/env bash
 
-mkdir -p test/build
-cmake -S test -B test/build -G "Unix Makefiles" -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX
-cmake --build test/build --target all
-cd test/build
+set -o xtrace -o nounset -o pipefail -o errexit
+
+cmake -S test -B build -G "Unix Makefiles" -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX
+cmake --build build --target all
+cd build
 ctest -V .
-
