@@ -2,13 +2,9 @@
 
 set -o xtrace -o nounset -o pipefail -o errexit
 
-# Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
-# This will allow them to be run on environment activation.
-for CHANGE in "activate" "deactivate"
-do
-    mkdir -p "${PREFIX}/etc/conda/${CHANGE}.d"
-    cp "${RECIPE_DIR}/${CHANGE}.sh" "${PREFIX}/etc/conda/${CHANGE}.d/${PKG_NAME}_${CHANGE}.sh"
-done
+# Set CPPUTEST_HOME via env_vars.d JSON (handled by conda at activation time).
+mkdir -p "${PREFIX}/etc/conda/env_vars.d"
+printf '{"CPPUTEST_HOME": "%s"}\n' "${PREFIX}" > "${PREFIX}/etc/conda/env_vars.d/${PKG_NAME}.json"
 
 if [[ ${CONDA_BUILD_CROSS_COMPILATION:-0} == 1 ]]; then
     BOOTSTRAP_CMAKE_ARGS=${CMAKE_ARGS//${PREFIX}/${BUILD_PREFIX}}

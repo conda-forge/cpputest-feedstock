@@ -1,1 +1,0 @@
-unset CPPUTEST_HOME
